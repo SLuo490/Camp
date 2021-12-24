@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const db = mongoose.connection;
 const Campground = require('./models/campground');
 
-// Connect to database
+// Connect to database camp
 mongoose.connect('mongodb://localhost:27017/camp')
   .then(() => {
     console.log("Connection Open");
@@ -23,15 +23,21 @@ app.get('/', (req, res) => {
   res.render('home');
 })
 
-// Test to see if code is connected to database
-app.get('/makecampground', async (req, res) => {
-  const camp = new Campground({
-    title: "My Backyard",
-    description: "Cheap camping"
+app.get('/campgrounds', async (req, res) => {
+  const campgrounds = await Campground.find({});
+  res.render('campgrounds/index', {
+    campgrounds
   });
-  await camp.save();
-  res.send(camp);
 })
+
+app.get('/campgrounds/:id', async (req, res) => {
+  const campground = await Campground.findById(req.params.id);
+  res.render('campgrounds/show', {
+    campground
+  });
+})
+
+
 
 app.listen(3000, () => {
   console.log("Serving on Port 3000");

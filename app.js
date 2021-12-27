@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const db = mongoose.connection;
 const Campground = require('./models/campground');
 const methodOverride = require('method-override');
+const ejsMate = require('ejs-mate');
+
 
 // Connect to database camp
 mongoose.connect('mongodb://localhost:27017/camp')
@@ -17,6 +19,7 @@ mongoose.connect('mongodb://localhost:27017/camp')
 
 const app = express();
 
+app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 

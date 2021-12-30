@@ -2,18 +2,16 @@ const mongoose = require('mongoose');
 const Campground = require('../models/campground');
 const db = mongoose.connection;
 const cities = require('./cities');
-const {
-  places,
-  descriptors
-} = require('./seedHelpers');
+const { places, descriptors } = require('./seedHelpers');
 
 // Connect to database
-mongoose.connect('mongodb://localhost:27017/camp')
+mongoose
+  .connect('mongodb://localhost:27017/camp')
   .then(() => {
-    console.log("Connection Open");
+    console.log('Connection Open');
   })
-  .catch(err => {
-    console.log("Error");
+  .catch((err) => {
+    console.log('Error');
     console.log(err);
   });
 
@@ -29,14 +27,15 @@ const seedDB = async () => {
     const camp = new Campground({
       location: `${cities[random1000].city}, ${cities[random1000].state}`,
       title: `${sample(descriptors)} ${sample(places)}`,
-      image: "https://source.unsplash.com/collection/483251/955x600",
-      description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod reprehenderit molestiae, maiores repudiandae hic veritatis!",
-      price
-    })
+      image: 'https://source.unsplash.com/collection/483251/955x600',
+      description:
+        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod reprehenderit molestiae, maiores repudiandae hic veritatis!',
+      price,
+    });
     await camp.save();
   }
-}
+};
 
 seedDB().then(() => {
   mongoose.connection.close();
-}); 
+});

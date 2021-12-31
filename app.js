@@ -56,6 +56,7 @@ app.get(
   })
 );
 
+// Create New Campground
 app.get('/campgrounds/new', (req, res) => {
   res.render('campgrounds/new');
 });
@@ -70,6 +71,7 @@ app.post(
   })
 );
 
+// Show Campground with ID
 app.get(
   '/campgrounds/:id',
   catchAsync(async (req, res) => {
@@ -80,6 +82,7 @@ app.get(
   })
 );
 
+// Show Edit Campground Page
 app.get(
   '/campgrounds/:id/edit',
   catchAsync(async (req, res) => {
@@ -90,6 +93,7 @@ app.get(
   })
 );
 
+// Edit Campground
 app.put(
   '/campgrounds/:id',
   validateCampground,
@@ -102,6 +106,7 @@ app.put(
   })
 );
 
+// Delete Campground
 app.delete(
   '/campgrounds/:id',
   catchAsync(async (req, res) => {
@@ -111,11 +116,12 @@ app.delete(
   })
 );
 
-// For all path, Will only run after everything runs
+// Throw a error page for all paths that does not exist
 app.all('*', (req, res, next) => {
   next(new ExpressError('Page Not Found', 404));
 });
 
+// Show Error Page
 app.use((err, req, res, next) => {
   const { statusCode = 500 } = err;
   if (!err.message) {

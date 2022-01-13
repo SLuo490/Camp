@@ -7,6 +7,7 @@ const ExpressError = require('./utils/ExpressError');
 const db = mongoose.connection;
 const campgrounds = require('./routes/campgrounds');
 const reviews = require('./routes/reviews');
+const session = require('express-session');
 
 // Connect to database camp
 mongoose
@@ -29,6 +30,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+const sessionConfig = {
+  secret: 'thisshouldbeabettersecret',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    httpOnly: true,
+    // Expiration Date is a week from now
+    expire: Date.now() + 1000 * 60 * 60 * 24 * 7,
+    maxAge: 1000 * 60 * 60 * 24 * 7,
+  },
+};
+app.use(session(sessionConfig));
 app.use('/campgrounds', campgrounds);
 app.use('/campgrounds/:id/reviews', reviews);
 

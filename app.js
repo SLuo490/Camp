@@ -8,6 +8,7 @@ const db = mongoose.connection;
 const campgrounds = require('./routes/campgrounds');
 const reviews = require('./routes/reviews');
 const session = require('express-session');
+const flash = require('connect-flash');
 
 // Connect to database camp
 mongoose
@@ -42,6 +43,15 @@ const sessionConfig = {
   },
 };
 app.use(session(sessionConfig));
+app.use(flash());
+
+// Middleware to access flash(success/error)
+app.use((req, res, next) => {
+  res.locals.success = req.flash('success');
+  res.locals.error = req.flash('error');
+  next();
+});
+
 app.use('/campgrounds', campgrounds);
 app.use('/campgrounds/:id/reviews', reviews);
 

@@ -7,8 +7,13 @@ const ExpressError = require('./utils/ExpressError');
 const db = mongoose.connection;
 const campgrounds = require('./routes/campgrounds');
 const reviews = require('./routes/reviews');
+
 const session = require('express-session');
 const flash = require('connect-flash');
+
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const User = require('./models/user');
 
 // Connect to database camp
 mongoose
@@ -42,14 +47,28 @@ const sessionConfig = {
     maxAge: 1000 * 60 * 60 * 24 * 7,
   },
 };
+
 app.use(session(sessionConfig));
 app.use(flash());
+
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // Middleware to access flash(success/error)
 app.use((req, res, next) => {
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
   next();
+});
+
+app.get('/fakeUser', async (req, res) => {
+  const user = new User({ email: 'fake@gmail.com', username: 'fakee' });
+  const newUser = await User.register(user, 'fake');
+  res.send(newUser);
 });
 
 app.use('/campgrounds', campgrounds);

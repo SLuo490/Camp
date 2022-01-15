@@ -41,7 +41,10 @@ router.post(
   }),
   (req, res) => {
     req.flash('success', 'Welcome Back');
-    res.redirect('/campgrounds');
+    // Redirect user to last page when sent to login page
+    const redirectUrl = req.session.returnTo || '/campgrounds';
+    delete req.session.returnTo;
+    res.redirect(redirectUrl);
   }
 );
 

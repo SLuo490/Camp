@@ -5,6 +5,7 @@ const ExpressError = require('../utils/ExpressError');
 const Review = require('../models/review');
 const Campground = require('../models/campground');
 const { reviewSchema } = require('../schemas');
+const { isLoggedIn } = require('../middleware');
 
 const validateReview = (req, res, next) => {
   const { error } = reviewSchema.validate(req.body);

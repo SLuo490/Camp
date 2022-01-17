@@ -43,9 +43,7 @@ router.get(
       req.flash('error', 'Cannnot find campground');
       return res.redirect('/campgrounds');
     }
-    res.render('campgrounds/show', {
-      campground,
-    });
+    res.render('campgrounds/show', { campground });
   })
 );
 

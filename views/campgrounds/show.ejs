@@ -3,6 +3,8 @@
 
 <div class="row">
   <div class="col-6">
+    <div id='map' style='width: 635px; height: 300px;'></div>
+
     <div id="campgroundCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <% campground.images.forEach((img, i) => { %>
@@ -86,7 +88,7 @@
         </p>
         <p class="card-text">Review: <%= review.body %> </p>
         <% if(currentUser && review.author.equals(currentUser._id)) { %>
-        <form action="/campgrounds/<%=campground._id%>/reviews/<%=review._id%>?_method=DELETE" method=POST>
+        <form action="/campgrounds/<%=campground._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
           <button class="btn btn-sm btn-danger">Delete</button>
         </form>
         <% } %>
@@ -95,3 +97,8 @@
     <% } %>
   </div>
 </div>
+
+<script>
+  const mapToken = '<%- process.env.MAPBOX_TOKEN %>'
+</script>
+<script src="/scripts/showPageMap.js"></script>

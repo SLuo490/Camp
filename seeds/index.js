@@ -25,12 +25,17 @@ const seedDB = async () => {
     const price = Math.floor(Math.random() * 20) + 10;
     // Create a 50 new camp with random city and state names
     const camp = new Campground({
+      // Your User ID
       author: '61e57c463bda2b593ad37fc5',
       location: `${cities[random1000].city}, ${cities[random1000].state}`,
       title: `${sample(descriptors)} ${sample(places)}`,
       description:
         'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod reprehenderit molestiae, maiores repudiandae hic veritatis!',
       price,
+      geometry: {
+        type: 'Point',
+        coordinates: [-74.006, 40.7128],
+      },
       images: [
         {
           url: 'https://res.cloudinary.com/dfrl0ds3b/image/upload/v1642522611/Camp/grwqedocnpqhnqyqn7qo.jpg',

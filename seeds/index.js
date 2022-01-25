@@ -20,10 +20,10 @@ const sample = (array) => array[Math.floor(Math.random() * array.length)];
 const seedDB = async () => {
   // Delete all data in campground
   await Campground.deleteMany({});
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 300; i++) {
     const random1000 = Math.floor(Math.random() * 1000);
     const price = Math.floor(Math.random() * 20) + 10;
-    // Create a 50 new camp with random city and state names
+    // Create a 200 new camp with random city and state names
     const camp = new Campground({
       // Your User ID
       author: '61e57c463bda2b593ad37fc5',

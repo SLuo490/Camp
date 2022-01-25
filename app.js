@@ -73,13 +73,7 @@ app.use((req, res, next) => {
   res.locals.error = req.flash('error');
   next();
 });
-
-app.get('/fakeUser', async (req, res) => {
-  const user = new User({ email: 'fake@gmail.com', username: 'fakee' });
-  const newUser = await User.register(user, 'fake');
-  res.send(newUser);
-});
-
+ 
 app.use('/', userRoutes);
 app.use('/campgrounds', campgroundsRoutes);
 app.use('/campgrounds/:id/reviews', reviewsRoutes);

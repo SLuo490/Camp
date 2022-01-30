@@ -10,6 +10,9 @@ const methodOverride = require('method-override');
 const ExpressError = require('./utils/ExpressError');
 const db = mongoose.connection;
 
+// Security
+const mongoSanitize = require('express-mongo-sanitize');
+
 // Routes
 const campgroundsRoutes = require('./routes/campgrounds');
 const reviewsRoutes = require('./routes/reviews');
@@ -43,6 +46,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(mongoSanitize);
 
 const sessionConfig = {
   secret: 'thisshouldbeabettersecret',
@@ -73,7 +77,7 @@ app.use((req, res, next) => {
   res.locals.error = req.flash('error');
   next();
 });
- 
+
 app.use('/', userRoutes);
 app.use('/campgrounds', campgroundsRoutes);
 app.use('/campgrounds/:id/reviews', reviewsRoutes);

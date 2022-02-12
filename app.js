@@ -11,6 +11,9 @@ const ExpressError = require('./utils/ExpressError');
 const db = mongoose.connection;
 const MongoStore = require('connect-mongo');
 
+// Time
+const moment = require('moment');
+
 // Security
 const mongoSanitize = require('express-mongo-sanitize');
 
@@ -54,6 +57,11 @@ app.use(
     replaceWith: '_',
   })
 );
+
+app.use((req, res, next) => {
+  res.locals.moment = moment;
+  next();
+});
 
 const secret = process.env.SECRET || 'thisshouldbeabettersecret';
 

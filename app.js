@@ -9,6 +9,7 @@ const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
 const ExpressError = require('./utils/ExpressError');
 const db = mongoose.connection;
+const MongoStore = require('connect-mongo');
 
 // Security
 const mongoSanitize = require('express-mongo-sanitize');
@@ -27,8 +28,9 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 
 // Connect to database camp
+const dbUrl = 'mongodb://localhost:27017/camp';
 mongoose
-  .connect('mongodb://localhost:27017/camp')
+  .connect(dbUrl)
   .then(() => {
     console.log('Connection Open');
   })
@@ -52,7 +54,20 @@ app.use(
   })
 );
 
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  touchAfter: 24 * 60 * 60,
+  crypto: {
+    secret: 'thisshouldbeabettersecret',
+  },
+});
+
+store.on('error', function (e) {
+  console.log('SESSION STORE ERROR', e);
+});
+
 const sessionConfig = {
+  store,
   name: 'session',
   secret: 'thisshouldbeabettersecret',
   resave: false,

@@ -28,7 +28,8 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 
 // Connect to database camp
-const dbUrl = 'mongodb://localhost:27017/camp';
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/camp';
+
 mongoose
   .connect(dbUrl)
   .then(() => {
@@ -54,11 +55,13 @@ app.use(
   })
 );
 
+const secret = process.env.SECRET || 'thisshouldbeabettersecret';
+
 const store = MongoStore.create({
   mongoUrl: dbUrl,
   touchAfter: 24 * 60 * 60,
   crypto: {
-    secret: 'thisshouldbeabettersecret',
+    secret,
   },
 });
 
@@ -69,7 +72,7 @@ store.on('error', function (e) {
 const sessionConfig = {
   store,
   name: 'session',
-  secret: 'thisshouldbeabettersecret',
+  secret,
   resave: false,
   saveUninitialized: true,
   cookie: {

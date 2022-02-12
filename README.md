@@ -15,7 +15,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img src="https://github.com/SLuo490/camp/blob/master/Camp%20Landing%20Page.png">
+<a href = "https://boiling-forest-08773.herokuapp.com/">
+  <img src="https://github.com/SLuo490/camp/blob/master/Camp%20Landing%20Page.png">
+</a>
 
 ### Built With
 

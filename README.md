@@ -22,7 +22,6 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -30,23 +29,18 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<img src="https://github.com/SLuo490/camp/blob/master/Camp%20Landing%20Page.png">
 
 ### Built With
 
+* [MongoDB](https://www.mongodb.com/)
+* [Express](https://expressjs.com/)
 * [EJS](https://ejs.co/)
 * [Bootstrap](https://getbootstrap.com)
-* [Express](https://expressjs.com/)
-* [MongoDB](https://www.mongodb.com/)
+* [NodeJS](https://nodejs.org/en/)
 * [Passport](https://www.passportjs.org/)
 * [Cloudinary](https://cloudinary.com/)
 * [Mapbox](https://www.mapbox.com/)
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
 
 <!-- CONTACT -->
 ## Contact

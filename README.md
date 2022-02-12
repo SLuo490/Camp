@@ -1,13 +1,12 @@
 <div id="top"></div>
 
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
 
 <h3 align="center">Camp</h3>
 
   <p align="center">
-    project_description
+    Built a CRUD website where users can create campgrounds, update their own campgrounds, view other users' campgrounds, leave reviews, and locate campground location with a cluster map. 
     <br />
     <a href="https://boiling-forest-08773.herokuapp.com/">View Website</a>
     </p>
@@ -34,10 +33,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 ### Built With
 

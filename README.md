@@ -8,14 +8,14 @@
   <p align="center">
     Built a CRUD website where users can create campgrounds, update their own campgrounds, view other users' campgrounds, leave reviews, and locate campground location with a cluster map. 
     <br />
-    <a href="https://boiling-forest-08773.herokuapp.com/">View Website</a>
+    <a href="https://boiling-forest-08773.herokuapp.com/" target = "_blank">View Website</a>
     </p>
 </div>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<a href = "https://boiling-forest-08773.herokuapp.com/">
+<a href = "https://boiling-forest-08773.herokuapp.com/" target = "_blank">
   <img src="https://github.com/SLuo490/camp/blob/master/Camp%20Landing%20Page.png">
 </a>
 

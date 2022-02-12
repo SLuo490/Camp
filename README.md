@@ -24,7 +24,6 @@
     </li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -33,22 +32,20 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 ### Built With
 
-* [Express]
+* [EJS](https://ejs.co/)
 * [Bootstrap](https://getbootstrap.com)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
+* [Express](https://expressjs.com/)
+* [MongoDB](https://www.mongodb.com/)
+* [Passport](https://www.passportjs.org/)
+* [Cloudinary](https://cloudinary.com/)
+* [Mapbox](https://www.mapbox.com/)
 
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 <!-- CONTACT -->
@@ -57,14 +54,5 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 Shi Tao - sluo5991@gmail.com
 
 Project Link: [Camp](https://github.com/SLuo490/camp)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
 
 <p align="right">(<a href="#top">back to top</a>)</p>
